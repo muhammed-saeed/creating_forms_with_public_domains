@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{%block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <form method="post" class="col s12">
+      <input type="hidden" name="id" id="id">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">account_circle</i>
+          <input required type="text" name="what_is_problem" id="what_is_problem" class="validate" />
+          <label for="what_is_problem">ما هي المشكله ؟</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">info</i>
+          <input required type="text" name="when_problem_started" id="when_problem_started" class="validate" />
+          <label for="when_problem_started">متى بدات تلاحظ المشكله؟</label>
+          
+          
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">phone</i>
+          <!-- <input required type="tel" name="through_which_part_of_day_problem_occurs" id="through_which_part_of_day_problem_occurs" class="validate" /> -->
+          <label for="time_lists">في اي وقت من اليوم تلاحظ المشكله ؟</label>
+          <br>
+          <span class="helper-text">pls select</span>
+          <select  id="call_phone" name="time_lists" required>
+            <option value="morning">صباح</option>
+            <option value="evening">ظهر</option>
+            <option value="afternoon">مساء</option>
+            <option value="night">ليل</option>
+            <option value="all_day">طوال اليوم</option>
+          </select>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">groups</i>
+          <!-- <input required type="tel" name="social_phone" id="social_phone" class="validate" /> -->
+          <label for="how_frequent_the_problem_is">ما مدى تكرار هذه المشكله</label>
+          <br>
+          <span class="helper-text">pls select</span>
+          <select id='how_frequent_the_problem_is' name='frequency_list' >
+            <option value='sometimes'>بعض الاحيان</option>
+            <option value='most of the time'>معظم الاوقات</option>
+            <option value='persistent_always_occuring_problem'>دائما</option>
+          </select>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">home</i>
+          <!-- <input required type="text" name="address" id="address" class="validate" /> -->
+          <label for="where_problem_noticed">اين لوحظت المشكله</label>
+          <select id='where_problem_noticed' name='places_list'>
+            <option value='in_the_air'>في الهواء الطلق</option>
+            <option value='inside'>بالداخل</option>
+            <option value='deep_inside_home'>بالداخل عميقا</option>
+            <option value='in_car'>في السياره</option>
+          </select>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">work</i>
+          <!-- <input required type="text" name="job" id="job" class="validate" /> -->
+          <label for="type_of_device">ما هو نوع الجهاز</label>
+          <select id='type_of_device' name='devices_lists'>
+            <option value='wifi'>Wifi</option>
+            <option value='usb_data_card'>USB Data Card</option>
+            <option value='mobile'> Mobile</option>
+          </select>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">store</i>
+          <!-- <input required type="text" name="job_loc" id="job_loc" class="validate" /> -->
+          <label for="payment_method">ما هو نوع الخط</label>
+          <input type="radio"  name="payment_method" id = "post_paid" value="post_paid"> Post Paid<br>
+          <input type="radio"  name="payment_method" id="pre_paid" value="pre_paid">Pre Paid<br>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">fingerprint</i>
+          <!-- <input required type="text" name="cred_num" id="cred_num" class="validate" /> -->
+          <label for="problem_describtion_network_settings_">المعلومات ووصف المشكله</label>
+          <div class='input-field col s12 m6'>
+            <label for="network_settings">اعدادات الشبكه</label><br>
+            <input type="radio"  name="problem_describtion_network_settings_" id="problem_describtion_network_settings_" value="3g"> 3G<br>
+            <input type="radio"  name="problem_describtion_network_settings_" id="problem_describtion_network_settings_" value="2G"> 2G<br>
+            <input type="radio"  name="problem_describtion_network_settings_" id="problem_describtion_network_settings_" value="daul">daul<br>
+
+          </div>
+          <div class='input-field col s12 m6'>
+            <label for="number_of_network_bars">اشرطة اشارة الشبكة</label><br>
+            <input type="radio"  name="number_of_network_bars_" id="number_of_network_bars_" value="full"> كامله<br>
+            <input type="radio"  name="number_of_network_bars_" id="number_of_network_bars_" value="four"> 4<br>
+            <input type="radio"  name="number_of_network_bars_" id="number_of_network_bars_" value="three"> 3<br>
+            <input type="radio"  name="number_of_network_bars_" id="number_of_network_bars_" value="two"> 2<br>
+            <input type="radio" name="number_of_network_bars_" id="number_of_network_bars_" value="one"> 1<br>
+
+          </div>
+
+          <div class='input-field col s12 m6'>
+            <label for="what_is_letter_on_mobile_phone">ما هو الحرف على الهاتف</label><br>
+            <input type="radio"  name="what_is_letter_on_mobile_phone_" id="what_is_letter_on_mobile_phone_" value="what_is_letter_on_mobile_phone__H+"> H+<br>
+            <input type="radio"  name="what_is_letter_on_mobile_phone_" id="what_is_letter_on_mobile_phone_" value="what_is_letter_on_mobile_phone__H"> H<br>
+            <input type="radio"  name="what_is_letter_on_mobile_phone_" id="what_is_letter_on_mobile_phone_" value="what_is_letter_on_mobile_phone__3G"> 3G<br>
+            <input type="radio"  name="what_is_letter_on_mobile_phone_" id="what_is_letter_on_mobile_phone_" value="what_is_letter_on_mobile_phone__G"> G<br>
+            <input type="radio"  name="what_is_letter_on_mobile_phone_" id="what_is_letter_on_mobile_phone_" value="what_is_letter_on_mobile_phone__E"> E<br>
+
+          </div>
+
+          <div class='input-field col s12 m6'>
+            <label for="same_problem_surronding_people">هل يعاني الاشخاص حولك نفس المشكله ؟</label><br>
+            <input type="radio"   name="same_problem_surronding_people" id="same_problem_surronding_people" value="yes" />
+             نعم<br>
+            <input type="radio"   name="same_problem_surronding_people" id="same_problem_surronding_people" value="no" />
+            لا<br>
+            <input type="radio" name="same_problem_surronding_people" id="same_problem_surronding_people"  value="idk" />
+             لا اعلم<br>
+            <div class='input-field col s12 m6'>
+              <label for='case_no_people_has_same_problem_in_neighborhood'>اذا كانت الاجابه لا هل حاولت اختبار الشريحه الخاصه بك في جهاة اخر او العكس ؟</label><br>
+              <input type='radio' name='case_no_people_has_same_problem_in_neighborhood_' id= 'case_no_people_has_same_problem_in_neighborhood_' value ='yes'>نعم<br>
+              <input type='radio' name='case_no_people_has_same_problem_in_neighborhood_' id= 'case_no_people_has_same_problem_in_neighborhood_' value ='no'>لا<br>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class='input-field col s12 m6'>
+          <label for="problem_location">اين تلاحظ هذه المشكله ؟</label><br>
+          <input type="radio" name="problem_location_" id="problem_location_" value="complain_from_single_location">موقع واحد اشكو منه<br>
+          <input type="radio" name="problem_location_" id="problem_location_" value="complaing_from_multiple_locations">في كل مكان<br>
+        </div>
+
+        
+
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">watch_later</i><br>
+          <input required type="text" name="GPS" id="GPS" class="validate" />
+          <label for="GPS">اذا ممكن ادخل احداثيات الطول و العرض</label>
+        </div>
+        
+        <div class='input-field col s12 m6'>
+          <label for="closest_mtn_antenna">هل تعلم اين اقرب برج ل ام تي ان قربك ؟</label><br>
+          <input type="radio" name="closest_mtn_antenna_?" id="closest_mtn_antenna_?" value="yes">yes<br>
+          <input type="radio" name="closest_mtn_antenna_?" id="closest_mtn_antenna_?" value="no">no<br>
+          <div class="input-field col s12 m6">
+            <input required type="text" name="case_close_mtn_antenna" id='case_close_mtn_antenna' class="validate">
+            <label for='case_close_mtn_antenna'>اذا كانت الاجابه نعم كم يبعد عنك ؟</label><br>
+          </div>
+        </div>
+      
+       </div>
+       <!-- end of the problem describtion tags -->
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">comment</i>
+            <textarea name="comment" id="comment" class="materialize-textarea"></textarea>
+            <label for="comment">تعليق</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s4 offset-s4">
+            <button class="btn waves-effect waves-light" id="submit" type='submit' name='submit'
+              >
+              <i class="material-icons right">send</i>تأكيد الطلب
+            </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+{% endblock %}

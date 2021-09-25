@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/phone.css') }}" />
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+	<div id="phone-container" class="row">
+		<div class="col s12 input-field">
+			<i class="material-icons prefix">phone</i>
+			<input type="tel" name="phone" id="phone">
+			<label for="phone">رقم الهاتف</label>
+		</div>
+		<div class="col s12 button-container">
+			<button disabled class="btn waves-effect waves-light" id="signin">
+				ارسال رمز التحقق
+			</button>
+		</div>
+	</div>
+	<div id="otp-container" class="row hide">
+		<div class="col s12 input-field">
+			<i class="material-icons prefix">pin</i>
+			<input type="tel" name="otp" id="otp">
+			<label for="phone">رمز التحقق</label>
+		</div>
+		<div class="col s12 button-container">
+			<button id="change-phone" class="btn-flat waves-effect waves-teal">تغيير الهاتف</button>
+			<button id="verify" class="btn waves-effect waves-light"
+				data-next-url="{{ url_for('checkout', _external=True, _scheme='https') }}">
+				تأكيد الرمز
+			</button>
+		</div>
+	</div>
+	<div class="row hide">
+		<div class="col s12">
+			<p id="error"></p>
+		</div>
+	</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"
+	nonce="{{ csp_nonce() }}"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"
+	nonce="{{ csp_nonce() }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.9.23/bundle/libphonenumber-min.js"
+	nonce="{{ csp_nonce() }}" integrity="sha256-u74+8+ShIbXna7X7Yt/8UMv6neAcQzJzQu5jrG6broA="
+	crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/phone.js') }}" nonce="{{ csp_nonce() }}"></script>
+{% endblock %}

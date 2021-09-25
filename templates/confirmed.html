@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/confirmed.css') }}" />
+{% endblock %}
+
+{% block content %}
+<div class="confirmed-container">
+  <h2>تم تأكيد الطلب!</h2>
+  <h4>يمكنك اغلاق النافذة</h4>
+</div>
+
+<script nonce="{{ csp_nonce() }}">
+  window.extAsyncInit = function () {
+    console.log("Loaded Facebook SDK");
+    setTimeout(() => {
+      MessengerExtensions.requestCloseBrowser();
+    }, 3000);
+  }
+</script>
+{% endblock %}

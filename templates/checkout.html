@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{%block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <form method="post" class="col s12">
+      <input type="hidden" name="id" id="id">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">account_circle</i>
+          <input required type="text" name="name" id="name" class="validate" />
+          <label for="name">الإسم</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">info</i>
+          <input required type="text" name="age" id="age" class="validate" />
+          <label for="age">العمر</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">phone</i>
+          <input required type="tel" name="call_phone" id="call_phone" class="validate" />
+          <label for="call_phone">رقم هاتف المكالمات</label>
+          <span class="helper-text">يجب ان يبدأ رقم الهاتف بالرقم 0</span>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">groups</i>
+          <input required type="tel" name="social_phone" id="social_phone" class="validate" />
+          <label for="social_phone">رقم هاتف واتساب او تيليقرام</label>
+          <span class="helper-text">يجب ان يبدأ رقم الهاتف بالرقم 0</span>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">home</i>
+          <input required type="text" name="address" id="address" class="validate" />
+          <label for="address">مكان السكن</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">work</i>
+          <input required type="text" name="job" id="job" class="validate" />
+          <label for="job">المهنة</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">store</i>
+          <input required type="text" name="job_loc" id="job_loc" class="validate" />
+          <label for="job_loc">مكان العمل</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">fingerprint</i>
+          <input required type="text" name="cred_num" id="cred_num" class="validate" />
+          <label for="cred_num">رقم رخصة القيادة</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">watch_later</i>
+          <input required type="date" name="cred_exp" id="cred_exp" class="validate" />
+          <label for="cred_exp">تاريخ انتهاء صلاحية رخصة القيادة </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">comment</i>
+          <textarea name="comment" id="comment" class="materialize-textarea"></textarea>
+          <label for="comment">تعليق</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4 offset-s4">
+          <button class="btn waves-effect waves-light" id="submit" type='submit' name='submit'
+            >
+            <i class="material-icons right">send</i>تأكيد الطلب
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/checkout.js') }}" nonce="{{ csp_nonce() }}"></script>
+{% endblock %}
